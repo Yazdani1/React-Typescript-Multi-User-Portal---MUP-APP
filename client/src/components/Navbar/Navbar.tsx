@@ -13,7 +13,7 @@ import { UserContext } from "../../UserContext";
 const Navbar = () => {
   let navigate = useNavigate();
 
-  const userContextInfo = useContext(UserContext);
+  const [state, setState] = useContext(UserContext);
 
   const [navScrollColor, setNavScrollColor] = useState(false);
 
@@ -31,6 +31,7 @@ const Navbar = () => {
     window.localStorage.removeItem("tokenLogin");
     window.localStorage.removeItem("token");
     navigate("/signin");
+    setState("");
   };
 
   return (
@@ -39,20 +40,13 @@ const Navbar = () => {
         navScrollColor ? "navbar-scroll-color navbar-main" : "navbar-main"
       }
     >
-      {userContextInfo.user?.token ? (
+      {state && state.token && state.token ? (
         <ul>
-          <li className="nav-item">
-            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-              User Token is :{" "}
-              {userContextInfo.user?.token
-                ? userContextInfo.user?.token
-                : "No token to show user"}
-            </Link>
-          </li>
+         
 
           <li className="nav-item">
             <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-              Name: {userContextInfo.user?.name}
+              Name: {state && state.user && state.user.name}
             </Link>
           </li>
           <li className="nav-item">
@@ -82,8 +76,8 @@ const Navbar = () => {
           <li className="nav-item">
             <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
               User Name is :{" "}
-              {userContextInfo.user?.token
-                ? userContextInfo.user?.token
+              {state.user?.token
+                ? state.user?.token
                 : "No token to show user"}
             </Link>
           </li>

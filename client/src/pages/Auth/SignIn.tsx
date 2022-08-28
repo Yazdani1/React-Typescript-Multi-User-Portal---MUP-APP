@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext, AuthUser } from "../../UserContext";
+import { UserContext } from "../../UserContext";
 import "./SignIn.css";
 
 import PageLayout from "../PageLayout/PageLayout";
@@ -19,7 +19,7 @@ const SignIn = () => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
 
-  const userContextInfo = useContext(UserContext);
+  const [sate, setUserInfo] = useContext(UserContext);
 
   const userSignIn = async (e: any) => {
     e.preventDefault();
@@ -37,15 +37,13 @@ const SignIn = () => {
           position: toast.POSITION.TOP_RIGHT,
         });
 
-        console.log("token check"+res.data.user.name)
+        console.log("token check" + res.data.user.name);
 
-     
-          userContextInfo.setUser({
-            name: res.data.user.name,
-            email: res.data.user.email,
-            token: res.data.token,
-          });
-    
+        // update user information
+        setUserInfo({
+          user: res.data.user,
+          token: res.data.token,
+        });
 
         // save user info in local storage
         localStorage.setItem("tokenLogin", JSON.stringify(res.data));

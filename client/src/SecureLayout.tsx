@@ -9,11 +9,12 @@ interface IProposSecureLayout {
 const SecureLayout = ({ children }: IProposSecureLayout) => {
   let location = useLocation();
 
-  const userContextInfo = useContext(UserContext);
+  const [userstate, setState] = useContext(UserContext);
 
-  return userContextInfo?.user ? (
+  return userstate?.user ? (
     <> {children}</>
   ) : (
+
     <Navigate to="/signin" replace state={{ from: location }} />
   );
 };
