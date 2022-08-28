@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL,headerConfig } from "./config";
+import { API_URL, headerConfig } from "./config";
 
 /****************************************/
 /*********     User         *************/
@@ -19,7 +19,6 @@ export const userRegistration = async (props: UserRegistrationProps) => {
 export interface UserLoginProps {
   email: string;
   password: string;
-
 }
 
 export const userLogin = async (props: UserLoginProps) => {
@@ -27,36 +26,25 @@ export const userLogin = async (props: UserLoginProps) => {
   return res;
 };
 
-
 /****************************************/
 /*********     Category     *************/
 /****************************************/
 
 export interface CreateCategoryProps {
-
-  categoryName: string
-
+  categoryName: string;
 }
 
-export const createCategory = async (props:CreateCategoryProps)=>{
-
-  const res = await axios.post(API_URL+"/create-category",{...props}, headerConfig());
+export const createCategory = async (props: CreateCategoryProps) => {
+  const res = await axios.post(API_URL + "/create-category", { ...props },headerConfig());
   return res;
+};
 
-}
-
-
-export const getCategoryList = async ()=>{
-
-  const res = await axios.get(API_URL+"/category-list",headerConfig());
+export const getCategoryList = async () => {
+  const res = await axios.get(API_URL + "/category-list", headerConfig());
   return res;
+};
 
-}
-
-export const deleteCategory = async (id: number)=>{
-
-  const res = await axios.get(API_URL+"/delete-category/"+id,headerConfig());
+export const deleteCategory = async (id: number) => {
+  const res = await axios.delete(API_URL + "/delete-category/" + id,headerConfig());
   return res;
-
-}
-
+};

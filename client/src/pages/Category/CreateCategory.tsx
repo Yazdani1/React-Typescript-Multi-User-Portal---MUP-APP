@@ -1,9 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import DashboarPageLayout from "../PageLayout/DashboarPageLayout";
 import CardLayout from "../../components/CardLayout";
 import "./CreateCategory.css";
-const CreateCategory = () => {
+import {
+  createCategory,
+  CreateCategoryProps,
+  getCategoryList,
+  deleteCategory,
+} from "../../API";
+import CategoryList from "./CategoryList";
 
+const CreateCategory = () => {
+  const [category, setCategory] = useState<string>("");
+
+  const [categoryList, setCategoryList] = useState<any[]>([]);
+
+  // to create category
+  const onSubmitCreateCategory = async (e: any) => {
+    e.preventDefault();
+    try {
+      const payload: CreateCategoryProps = {
+        categoryName: category,
+      };
+
+      const res = await createCategory(payload);
+
+      if (res) {
+        toast.success("Category Created Successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+
+        setCategory("");
+
+        getAllCategory();
+      }
+    } catch (error: any) {
+      toast.error(error.response && error.response.data.error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
+
+  // to get all the category
+
+  const getAllCategory = async () => {
+    try {
+      const res = await getCategoryList();
+      setCategoryList(res.data);
+    } catch (error: any) {
+      toast.error(error.response && error.response.data.error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
+
+  // to delete category
+
+  const onDeleteSingleCategory = async (id: number) => {
+    try {
+      const res = await deleteCategory(id);
+
+      if (res) {
+        toast.success("Category Deleted Successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+
+        getAllCategory();
+      }
+    } catch (error: any) {
+      toast.error(error.response && error.response.data.error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getAllCategory();
+  }, []);
 
   return (
     <DashboarPageLayout>
@@ -16,8 +90,8 @@ const CreateCategory = () => {
                   <div className="form-group">
                     <input
                       type="text"
-                      // value={userName}
-                      // onChange={(e) => setUserName(e.target.value)}
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
                       className="form-control"
                       placeholder="Category name..."
                     />
@@ -27,9 +101,9 @@ const CreateCategory = () => {
                     <button
                       type="submit"
                       className="btn btn-success"
-                      //   onClick={(e) => submitPost(e)}
+                      onClick={(e) => onSubmitCreateCategory(e)}
                     >
-                     Create Category
+                      Create Category
                     </button>
                   </div>
                 </form>
@@ -37,14 +111,17 @@ const CreateCategory = () => {
             </div>
           </div>
         </CardLayout>
-        <div>
-            <CardLayout>
 
-                <h6>Node js</h6>
-                <h6>Node js</h6>
+        {/* to show list of category */}
+        <CardLayout>
+          {categoryList &&
+            categoryList.map((item, index) => (
+              <CategoryList category={item} key={index} onDeleteCategory={()=>onDeleteSingleCategory(item._id)}/>
+              // <CategoryList {...item} key={index}/>
+            ))}
+        </CardLayout>
 
-            </CardLayout>
-        </div>
+        <ToastContainer autoClose={8000} />
       </div>
     </DashboarPageLayout>
   );
