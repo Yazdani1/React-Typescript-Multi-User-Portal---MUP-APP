@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Navigate,
   useLocation,
@@ -8,21 +8,18 @@ import {
 } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext,AuthUser } from "../../UserContext";
+import { UserContext, AuthUser } from "../../UserContext";
 import "./SignIn.css";
 
 import PageLayout from "../PageLayout/PageLayout";
 import { userLogin, UserLoginProps } from "../../API";
 const SignIn = () => {
-
   let navigate = useNavigate();
 
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
 
-
   const userContextInfo = useContext(UserContext);
-
 
   const userSignIn = async (e: any) => {
     e.preventDefault();
@@ -35,34 +32,29 @@ const SignIn = () => {
 
       const res = await userLogin(payload);
 
-      if (res) {
-
+      if (res.data) {
         toast.success("You Loged In Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
 
+        console.log("token check"+res.data.user.name)
 
-        if(userContextInfo){
+     
           userContextInfo.setUser({
             name: res.data.user.name,
             email: res.data.user.email,
-            token: res.data.user.token
-          })
-        }
+            token: res.data.token,
+          });
+    
 
-           // save user info in local storage
-           window.localStorage.setItem("tokenLogin", JSON.stringify(res.data));
-           window.localStorage.setItem("token", res.data.token);
-   
+        // save user info in local storage
+        localStorage.setItem("tokenLogin", JSON.stringify(res.data));
 
-
-
-      
+        // window.localStorage.setItem("tokenLoginInfo",JSON.stringify(res.data.token));
 
         setUserEmail("");
         setUserPassword("");
         navigate("/");
-
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {

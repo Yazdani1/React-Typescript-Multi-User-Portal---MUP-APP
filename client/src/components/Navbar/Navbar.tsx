@@ -11,6 +11,8 @@ import {
 import { UserContext } from "../../UserContext";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+
   const userContextInfo = useContext(UserContext);
 
   const [navScrollColor, setNavScrollColor] = useState(false);
@@ -25,40 +27,89 @@ const Navbar = () => {
 
   window.addEventListener("scroll", onChangeNavColor);
 
+  const logOut = () => {
+    window.localStorage.removeItem("tokenLogin");
+    window.localStorage.removeItem("token");
+    navigate("/signin");
+  };
+
   return (
     <nav
       className={
         navScrollColor ? "navbar-scroll-color navbar-main" : "navbar-main"
       }
     >
-      <ul>
-        <li className="nav-item">
-          <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-            User Name is : {userContextInfo.user.name}
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to={"/signup"}
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            Sign Up
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to={"/signin"}
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            Sign In
-          </Link>
-        </li>
-      </ul>
+      {userContextInfo.user?.token ? (
+        <ul>
+          <li className="nav-item">
+            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
+              User Token is :{" "}
+              {userContextInfo.user?.token
+                ? userContextInfo.user?.token
+                : "No token to show user"}
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
+              Name: {userContextInfo.user?.name}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={"/dashboard"}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Dashboard
+            </Link>
+          </li>
+          <li className="nav-item" onClick={logOut}>
+            <Link
+              to={"/signin"}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Sign Out
+            </Link>
+          </li>
+        </ul>
+      ) : (
+        <ul>
+          <li className="nav-item">
+            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
+              User Name is :{" "}
+              {userContextInfo.user?.token
+                ? userContextInfo.user?.token
+                : "No token to show user"}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={"/signup"}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Sign Up
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={"/signin"}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Sign In
+            </Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };

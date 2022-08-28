@@ -3,6 +3,7 @@ import "./App.css";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import Home from "./pages/Home/Home";
+import Dashboar from "./pages/Dashboard/Dashboar";
 import SecureLayout from "./SecureLayout";
 import { UserProvider } from "./UserContext";
 
@@ -15,14 +16,14 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/" element={<Home />} />
 
-          {/* <Route
-            path="/post"
+          <Route
+            path="/dashboard"
             element={
               <SecureLayout>
-                <Post />
+                <Dashboar />
               </SecureLayout>
             }
-          /> */}
+          />
         </Routes>
       </BrowserRouter>
     </UserProvider>

@@ -1,4 +1,6 @@
 import React, { useState, createContext, useEffect, FC } from "react";
+import axios from "axios";
+import { API_URL } from "./config";
 
 export type AuthUser = {
   name: string;
@@ -6,30 +8,47 @@ export type AuthUser = {
   token: string;
 };
 
+type UserContextType = {
+  user: AuthUser | null;
+  setUser: React.Dispatch<React.SetStateAction<AuthUser | null>>;
+};
+
 type UserContextProviderProps = {
   children: React.ReactNode;
 };
 
-type UserContextType = {
+// const UserContext = createContext<UserContextType | null>(null);
 
-  user: AuthUser | null;
-  setUser: React.Dispatch<React.SetStateAction<AuthUser | null>>;
-
-}
-
-
-
-const UserContext = createContext<UserContextType | null>(null);
+const UserContext = createContext({} as UserContextType);
 
 const UserProvider = ({ children }: UserContextProviderProps) => {
+  // const localToken = JSON.parse(window.localStorage.getItem("tokenLogin"));
   const [user, setUser] = useState<AuthUser | null>(null);
 
+  // const [logedinuser, setLogedUser] = useState<React.Dispatch<React.SetStateAction<AuthUser | null>>>();
+
+  // const getSingleuser = async () => {
+  //   const res = await axios.get(API_URL + "/loged-inuser", {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //   });
+  //   setLogedUser(res.data);
+  // };
+
   useEffect(() => {
-    // return setUser(JSON.parse(window.localStorage.getItem("tokenLogin")));
+    const loggedInUser = localStorage.getItem("tokenLogin");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+
   }, []);
 
   return (
-    <UserContext.Provider value={{user, setUser}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
