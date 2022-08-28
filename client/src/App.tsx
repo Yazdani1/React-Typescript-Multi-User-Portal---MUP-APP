@@ -4,6 +4,7 @@ import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import Home from "./pages/Home/Home";
 import Dashboar from "./pages/Dashboard/Dashboar";
+import CreateCategory from "./pages/Category/CreateCategory";
 import SecureLayout from "./SecureLayout";
 import { UserProvider } from "./UserContext";
 
@@ -24,6 +25,16 @@ const App = () => {
               </SecureLayout>
             }
           />
+          
+          <Route
+            path="/create-category"
+            element={
+              <SecureLayout>
+                <CreateCategory />
+              </SecureLayout>
+            }
+          />
+
         </Routes>
       </BrowserRouter>
     </UserProvider>

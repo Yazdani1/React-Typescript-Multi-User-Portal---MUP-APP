@@ -46,7 +46,7 @@ const Navbar = () => {
 
           <li className="nav-item">
             <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-              Name: {state && state.user && state.user.name}
+               {state && state.user && state.user.name}
             </Link>
           </li>
           <li className="nav-item">
@@ -62,25 +62,11 @@ const Navbar = () => {
               Dashboard
             </Link>
           </li>
-          <li className="nav-item" onClick={logOut}>
-            <Link
-              to={"/signin"}
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Sign Out
-            </Link>
-          </li>
+        
         </ul>
       ) : (
         <ul>
-          <li className="nav-item">
-            <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-              User Name is :{" "}
-              {state.user?.token
-                ? state.user?.token
-                : "No token to show user"}
-            </Link>
-          </li>
+        
           <li className="nav-item">
             <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
               Home

@@ -19,7 +19,9 @@ const SignIn = () => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
 
-  const [sate, setUserInfo] = useContext(UserContext);
+  // const userContextInfo = useContext(UserContext);
+
+  const [state, setState] = useContext(UserContext);
 
   const userSignIn = async (e: any) => {
     e.preventDefault();
@@ -39,8 +41,14 @@ const SignIn = () => {
 
         console.log("token check" + res.data.user.name);
 
+        // userContextInfo.setUser({
+        //   name: res.data.user?.name,
+        //   email: res.data.user?.email,
+        //   token: res.data.token,
+        // });
+
         // update user information
-        setUserInfo({
+        setState({
           user: res.data.user,
           token: res.data.token,
         });
