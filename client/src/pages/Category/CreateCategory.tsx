@@ -23,16 +23,12 @@ const CreateCategory = () => {
       const payload: CreateCategoryProps = {
         categoryName: category,
       };
-
       const res = await createCategory(payload);
-
       if (res) {
         toast.success("Category Created Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
-
         setCategory("");
-
         getAllCategory();
       }
     } catch (error: any) {
@@ -116,7 +112,7 @@ const CreateCategory = () => {
         <CardLayout>
           {categoryList &&
             categoryList.map((item, index) => (
-              <CategoryList category={item} key={index} onDeleteCategory={()=>onDeleteSingleCategory(item._id)}/>
+              <CategoryList category={item} key={index} visibleButton={true} onDeleteCategory={()=>onDeleteSingleCategory(item._id)}/>
               // <CategoryList {...item} key={index}/>
             ))}
         </CardLayout>

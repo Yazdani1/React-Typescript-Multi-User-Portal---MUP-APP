@@ -40,7 +40,7 @@ export const createCategory = async (props: CreateCategoryProps) => {
 };
 
 export const getCategoryList = async () => {
-  const res = await axios.get(API_URL + "/category-list", headerConfig());
+  const res = await axios.get(API_URL + "/category-list");
   return res;
 };
 
@@ -48,3 +48,24 @@ export const deleteCategory = async (id: number) => {
   const res = await axios.delete(API_URL + "/delete-category/" + id,headerConfig());
   return res;
 };
+
+/****************************************/
+/********* Upload Image to AWS S3  ******/
+/****************************************/
+
+export interface UploadImageProps {
+
+  image: any
+
+}
+
+export const  uploadImage = async (props:UploadImageProps)=>{
+
+  const res = await axios.post(API_URL+"/upload-image",{...props}, headerConfig());
+
+  return res;
+
+}
+
+
+

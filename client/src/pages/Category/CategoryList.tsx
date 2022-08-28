@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { CategoryListProps } from "../../DataProvider";
-
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  Link,
+  NavLink,
+} from "react-router-dom";
 // const CategoryList = (category: CategoryListProps) => {
 //   const [show, setShow] = useState(false);
 
@@ -30,29 +36,77 @@ import { CategoryListProps } from "../../DataProvider";
 interface CategoryRowProps {
   category: CategoryListProps;
   common?: string;
-  onDeleteCategory?: ()=> void;
+  onDeleteCategory?: () => void;
+  visibleButton?: boolean;
+  linkid?: true;
 }
 
-const CategoryList = ({ category, common,onDeleteCategory }: CategoryRowProps) => {
+const CategoryList = ({
+  category,
+  common,
+  onDeleteCategory,
+  visibleButton,
+  linkid,
+}: CategoryRowProps) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div
-      className="category-list"
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      <div style={{ backgroundColor: common }}>
-        <h6>{category.categoryName}</h6>
-      </div>
+    <>
+      {linkid ? (
+        <Link
+          to={"/category/" + category.slug}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div
+            className="category-list"
+            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => setShow(false)}
+          >
+            <div style={{ backgroundColor: common }}>
+              <h6>{category.categoryName}</h6>
+            </div>
 
-      {show && (
-        <div >
-          <button style={{ marginRight: "20px" }} className="btn btn-success">Edit</button>
-          <button className="btn btn-danger" onClick={onDeleteCategory}>Delete</button>
+            {visibleButton && show && (
+              <div>
+                <button
+                  style={{ marginRight: "20px" }}
+                  className="btn btn-success"
+                >
+                  Edit
+                </button>
+                <button className="btn btn-danger" onClick={onDeleteCategory}>
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
+        </Link>
+      ) : (
+        <div
+          className="category-list"
+          onMouseEnter={() => setShow(true)}
+          onMouseLeave={() => setShow(false)}
+        >
+          <div style={{ backgroundColor: common }}>
+            <h6>{category.categoryName}</h6>
+          </div>
+
+          {visibleButton && show && (
+            <div>
+              <button
+                style={{ marginRight: "20px" }}
+                className="btn btn-success"
+              >
+                Edit
+              </button>
+              <button className="btn btn-danger" onClick={onDeleteCategory}>
+                Delete
+              </button>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

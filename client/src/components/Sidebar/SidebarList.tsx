@@ -12,6 +12,8 @@ import {
 } from "react-icons/fc";
 
 import { FaSignOutAlt } from "react-icons/fa";
+import { MdOutlinePostAdd } from "react-icons/md";
+
 import {
   Navigate,
   useLocation,
@@ -64,8 +66,11 @@ const SidebarList = ({ expandSidebar }: IPropsSidebarList) => {
             </li>
 
             <li className="nav-item">
-              <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-                <FcNightPortrait size={25} /> About
+              <Link
+                to={"/create-post"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <MdOutlinePostAdd size={25} color="yellow"/> Create Post
               </Link>
             </li>
             <li className="nav-item">
@@ -118,8 +123,11 @@ const SidebarList = ({ expandSidebar }: IPropsSidebarList) => {
             </li>
 
             <li className="nav-item">
-              <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-                <FcNightPortrait size={25} />
+              <Link
+                to={"/create-post"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <MdOutlinePostAdd size={25} color="yellow"/>
               </Link>
             </li>
 

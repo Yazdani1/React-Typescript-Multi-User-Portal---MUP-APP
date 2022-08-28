@@ -7,6 +7,7 @@ interface IPropsCardLayout {
   cardHeight?: string;
   children: ReactNode;
   buttonColor?: string;
+  backgroun_color?: string,
   closeButton?: () => void;
   closeButtonText?: string;
 }
@@ -17,9 +18,10 @@ const CardLayout = ({
   buttonColor,
   closeButton,
   closeButtonText,
+  backgroun_color
 }: IPropsCardLayout) => {
   return (
-    <div className="card-layout-design" style={{ height: cardHeight }}>
+    <div className="card-layout-design" style={{ height: cardHeight,backgroundColor:backgroun_color }}>
       <h5>{title}</h5>
       {children}
      
