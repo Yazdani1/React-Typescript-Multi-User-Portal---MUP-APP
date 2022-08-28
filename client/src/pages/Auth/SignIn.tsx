@@ -55,6 +55,8 @@ const SignIn = () => {
 
         // save user info in local storage
         localStorage.setItem("tokenLogin", JSON.stringify(res.data));
+        window.localStorage.setItem("token", res.data.token);
+
 
         // window.localStorage.setItem("tokenLoginInfo",JSON.stringify(res.data.token));
 
