@@ -3,17 +3,20 @@ import "./home.css";
 import PageLayout from "../PageLayout/PageLayout";
 import CardLayout from "../../components/CardLayout";
 import CategorySection from "./CategorySection";
+import PostSection from "./PostSection";
 
 const Home = () => {
   return (
     <PageLayout>
       <div className="container">
         <div className="row">
-          <div className="col-xl-8 col-lg-8 col-md-6 col-sm-12">Home post</div>
+          <div className="col-xl-9 col-lg-9 col-md-6 col-sm-12">
+            <PostSection />
+          </div>
 
-          <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+          <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
             <CardLayout title="Category">
-              <CategorySection/>
+              <CategorySection />
             </CardLayout>
           </div>
         </div>
