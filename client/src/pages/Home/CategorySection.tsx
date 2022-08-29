@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 import {
@@ -8,28 +8,19 @@ import {
   deleteCategory,
 } from "../../API";
 import CategoryList from "../Category/CategoryList";
+import {CategoryContext} from "../../CategoryContext";
+
+
 const CategorySection = () => {
-  const [categoryList, setCategoryList] = useState<any[]>([]);
 
-  // to get all the category
 
-  const getAllCategory = async () => {
-    try {
-      const res = await getCategoryList();
-      setCategoryList(res.data);
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
-  useEffect(() => {
-    getAllCategory();
-  }, []);
+  const categorylist = useContext(CategoryContext);
+
+ 
   return (
     <div >
-      {categoryList &&
-        categoryList.map((item, index) => (
+      {categorylist &&
+        categorylist.map((item:any, index:any) => (
           <CategoryList category={item} key={index} linkid={true} />
         ))}
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import DashboarPageLayout from "../PageLayout/DashboarPageLayout";
 import CardLayout from "../../components/CardLayout";
@@ -15,6 +15,8 @@ const CreateCategory = () => {
   const [category, setCategory] = useState<string>("");
 
   const [categoryList, setCategoryList] = useState<any[]>([]);
+
+
 
   // to create category
   const onSubmitCreateCategory = async (e: any) => {
@@ -61,6 +63,7 @@ const CreateCategory = () => {
         toast.success("Category Deleted Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
+
 
         getAllCategory();
       }
@@ -112,7 +115,12 @@ const CreateCategory = () => {
         <CardLayout>
           {categoryList &&
             categoryList.map((item, index) => (
-              <CategoryList category={item} key={index} visibleButton={true} onDeleteCategory={()=>onDeleteSingleCategory(item._id)}/>
+              <CategoryList
+                category={item}
+                key={index}
+                visibleButton={true}
+                onDeleteCategory={() => onDeleteSingleCategory(item._id)}
+              />
               // <CategoryList {...item} key={index}/>
             ))}
         </CardLayout>
@@ -124,3 +132,5 @@ const CreateCategory = () => {
 };
 
 export default CreateCategory;
+
+
