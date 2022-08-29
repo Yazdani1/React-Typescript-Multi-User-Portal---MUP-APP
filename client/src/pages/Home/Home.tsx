@@ -4,6 +4,7 @@ import PageLayout from "../PageLayout/PageLayout";
 import CardLayout from "../../components/CardLayout";
 import CategorySection from "./CategorySection";
 import PostSection from "./PostSection";
+import Skelton from "../../components/Skelton";
 
 const Home = () => {
   return (
