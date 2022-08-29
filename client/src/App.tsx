@@ -10,6 +10,7 @@ import CreatePost from "./pages/Post/CreatePost";
 import SecureLayout from "./SecureLayout";
 import { UserProvider } from "./UserContext";
 import { CategoryProvider } from "./CategoryContext";
+import DetailsPage from "./pages/DetailsPost/DetailsPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<Home />} />
+            <Route path="/details-post/:slug" element={<DetailsPage />} />
 
             <Route
               path="/dashboard"

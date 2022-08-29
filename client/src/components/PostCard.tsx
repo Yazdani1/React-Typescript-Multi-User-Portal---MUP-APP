@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { FiArrowRight } from "react-icons/fi";
-
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  Link,
+  NavLink,
+} from "react-router-dom";
 import { PostListProps } from "../DataProvider";
 
 import "./PostCard.css";
@@ -23,7 +29,6 @@ const PostCard = ({ post }: IPropsPostCard) => {
       >
         <div className="card team-members-item">
           <img src={post.image} />
-
           <div className="team-info">
             <div className="user-profile-pic">
               <h6>{post.postedBy.name}</h6>
@@ -33,28 +38,29 @@ const PostCard = ({ post }: IPropsPostCard) => {
 
             <div></div>
           </div>
-
-          
-
           {/* <span className="lineforteammembers"></span> */}
-
           <div className="date-categroy">
-            <h6 style={{color:"blueviolet",fontSize:"17px",}}>
-              {moment(post.date).format("MMM Do YY")}
-
-            
+            <h6 style={{ color: "blueviolet", fontSize: "17px" }}>
+              {moment(post.date).format("MMM Do YY")}.
             </h6>
-            <h6 style={{color:"blueviolet",fontSize:"17px",}}>{post.categoryBy.categoryName}</h6>
-          </div>
-          <div className="show-read-more-button">
-            {show && (
-              <p>
-                Read More
-                <FiArrowRight size={20}/>
-              </p>
-            )}
+            <h6 style={{ color: "red", fontSize: "17px" }}>
+              {post.categoryBy.categoryName}
+            </h6>
           </div>
 
+          <Link
+            to={"/details-post/" + post.slug}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <div className="show-read-more-button">
+              {show && (
+                <p>
+                  Read More
+                  <FiArrowRight size={20} />
+                </p>
+              )}
+            </div>
+          </Link>
         </div>
       </div>
     </React.Fragment>

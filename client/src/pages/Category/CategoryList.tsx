@@ -35,7 +35,6 @@ import {
 
 interface CategoryRowProps {
   category: CategoryListProps;
-  common?: string;
   onDeleteCategory?: () => void;
   visibleButton?: boolean;
   linkid?: true;
@@ -43,7 +42,6 @@ interface CategoryRowProps {
 
 const CategoryList = ({
   category,
-  common,
   onDeleteCategory,
   visibleButton,
   linkid,
@@ -62,7 +60,7 @@ const CategoryList = ({
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
           >
-            <div style={{ backgroundColor: common }}>
+            <div>
               <h6>{category.categoryName}</h6>
             </div>
 
@@ -89,7 +87,6 @@ const CategoryList = ({
         >
           <div
             style={{
-              backgroundColor: common,
               display: "flex",
               flex: "4",
             }}
