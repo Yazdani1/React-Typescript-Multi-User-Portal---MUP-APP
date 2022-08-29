@@ -87,8 +87,21 @@ const CategoryList = ({
           onMouseEnter={() => setShow(true)}
           onMouseLeave={() => setShow(false)}
         >
-          <div style={{ backgroundColor: common }}>
+          <div
+            style={{
+              backgroundColor: common,
+              display: "flex",
+              flex: "4",
+            }}
+          >
             <h6>{category.categoryName}</h6>
+            <h6
+              style={{ marginLeft: "40px" }}
+              onMouseEnter={() => setShow(true)}
+              onMouseLeave={() => setShow(false)}
+            >
+              {show && <p> Created on: {category.date}</p>}
+            </h6>
           </div>
 
           {visibleButton && show && (

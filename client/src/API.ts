@@ -35,7 +35,11 @@ export interface CreateCategoryProps {
 }
 
 export const createCategory = async (props: CreateCategoryProps) => {
-  const res = await axios.post(API_URL + "/create-category", { ...props },headerConfig());
+  const res = await axios.post(
+    API_URL + "/create-category",
+    { ...props },
+    headerConfig()
+  );
   return res;
 };
 
@@ -45,7 +49,10 @@ export const getCategoryList = async () => {
 };
 
 export const deleteCategory = async (id: number) => {
-  const res = await axios.delete(API_URL + "/delete-category/" + id,headerConfig());
+  const res = await axios.delete(
+    API_URL + "/delete-category/" + id,
+    headerConfig()
+  );
   return res;
 };
 
@@ -54,25 +61,50 @@ export const deleteCategory = async (id: number) => {
 /****************************************/
 
 export interface UploadImageProps {
-
-  image: any
-
+  image: any;
 }
 
-export const  uploadImage = async (props:UploadImageProps)=>{
-
-  const res = await axios.post(API_URL+"/upload-image",{...props}, headerConfig());
+export const uploadImage = async (props: UploadImageProps) => {
+  const res = await axios.post(
+    API_URL + "/upload-image",
+    { ...props },
+    headerConfig()
+  );
 
   return res;
-
-}
-
+};
 
 /****************************************/
 /*********       Post        ************/
 /****************************************/
 
+export interface PostCreateProps {
+  title: string;
+  des: string;
+  slug: string;
+  image: any;
+  categoryBy: string;
+  postedBy: string;
+}
 
+export const createPost = async (props: PostCreateProps) => {
+  const res = await axios.post(API_URL + "/create-post", { ...props }, headerConfig());
+  return res;
+};
 
+export const getAllPosts = async () => {
+  const res = await axios.get(API_URL + "/get-all-posts",);
+  return res;
+};
 
+export const getLogedInUserPosts = async () => {
+  const res = await axios.get(API_URL + "/logedin-user-posts", headerConfig());
+  return res;
+};
 
+export const deletePosts = async(id:number)=>{
+
+  const res = await axios.delete(API_URL+"/delete-post/"+id,headerConfig());
+  return res;
+
+}

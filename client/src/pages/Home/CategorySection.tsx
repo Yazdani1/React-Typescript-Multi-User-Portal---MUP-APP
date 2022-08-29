@@ -1,12 +1,5 @@
-import React, { useState,useContext, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useContext, } from "react";
 
-import {
-  createCategory,
-  CreateCategoryProps,
-  getCategoryList,
-  deleteCategory,
-} from "../../API";
 import CategoryList from "../Category/CategoryList";
 import {CategoryContext} from "../../CategoryContext";
 
