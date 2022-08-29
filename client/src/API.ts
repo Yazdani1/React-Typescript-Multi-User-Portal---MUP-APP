@@ -75,7 +75,7 @@ export const uploadImage = async (props: UploadImageProps) => {
 };
 
 /****************************************/
-/*********       Post        ************/
+/*********  Post Dashboard Side *********/
 /****************************************/
 
 export interface PostCreateProps {
@@ -100,9 +100,20 @@ export const getLogedInUserPosts = async () => {
   return res;
 };
 
+
 export const deletePosts = async(id:number)=>{
 
   const res = await axios.delete(API_URL+"/delete-post/"+id,headerConfig());
   return res;
 
 }
+
+
+export const singlePostDetails = async(slug:any) =>{
+
+  const res = await axios.get(API_URL+"/details-post/"+slug,);
+  return res;
+
+}
+
+

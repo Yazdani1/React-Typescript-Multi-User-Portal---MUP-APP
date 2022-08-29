@@ -33,5 +33,4 @@ export interface PostListProps extends UserDetailsProps,CategoryDetailsProps{
   slug: string;
   postedBy: UserDetailsProps;
   date: string;
-
 }
