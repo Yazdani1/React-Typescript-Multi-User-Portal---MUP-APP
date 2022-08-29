@@ -27,7 +27,7 @@ const PostSection = () => {
       <div className="row">
         {allPosts &&
           allPosts.map((postitem, index) => (
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12">
               <PostCard post={postitem} key={index} />
             </div>
           ))}

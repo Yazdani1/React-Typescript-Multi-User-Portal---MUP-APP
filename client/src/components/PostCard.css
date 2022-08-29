@@ -25,6 +25,7 @@
     margin-top: 20px;
     height: auto;
     overflow: hidden;
+    height: 400px;
   
     box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
     -webkit-box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
@@ -52,7 +53,7 @@
   
     transition: transform 2s, filter 1.5s ease-in-out;
     transform-origin: center center;
-    filter: brightness(70%);
+    filter: brightness(100%);
   }
   
   .team-members-item:hover img {
@@ -97,6 +98,19 @@
     background-color: rgb(228, 228, 171);
   }
   
+
+  .date-categroy{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .show-read-more-button p{
+    text-align: center;
+    color:blueviolet;
+  }
+
+
   @media (max-width: 1000px) {
     .team-members {
       height: auto;

@@ -1,7 +1,7 @@
-import React from "react";
-import { GrFacebookOption } from "react-icons/gr";
-import { ImLinkedin2 } from "react-icons/im";
-import { AiOutlineTwitter } from "react-icons/ai";
+import React, { useState } from "react";
+import moment from "moment";
+import { FiArrowRight } from "react-icons/fi";
+
 import { PostListProps } from "../DataProvider";
 
 import "./PostCard.css";
@@ -11,40 +11,50 @@ interface IPropsPostCard {
 }
 
 const PostCard = ({ post }: IPropsPostCard) => {
+  const [show, setShow] = useState(false);
+
   return (
     <React.Fragment>
-      <div className="container team-members" id="teammemebrs">
+      <div
+        className="container team-members"
+        id="teammemebrs"
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+      >
         <div className="card team-members-item">
           <img src={post.image} />
 
           <div className="team-info">
-
             <div className="user-profile-pic">
-
-            <h6>{post.postedBy.name}</h6>
-
+              <h6>{post.postedBy.name}</h6>
             </div>
 
             <h6>{post.title}</h6>
-            <p>{post.des}</p>
 
-            <div>
-            <p>{post.categoryBy.categoryName}</p>
-            </div>
+            <div></div>
           </div>
+
+          
+
           <span className="lineforteammembers"></span>
 
-          <div className="team-social-icon">
-            <p>
-              <GrFacebookOption size={25} />
+          <div className="date-categroy">
+            <p style={{color:"#cd5c5c",fontSize:"17px",}}>
+              {moment(post.date).format("MMM Do YY")}
+
+            
             </p>
-            <p>
-              <ImLinkedin2 size={20} />
-            </p>
-            <p>
-              <AiOutlineTwitter size={20} />
-            </p>
+            <p style={{color:"#cd5c5c",fontSize:"17px",}}>{post.categoryBy.categoryName}</p>
           </div>
+          <div className="show-read-more-button">
+            {show && (
+              <p>
+                Read More
+                <FiArrowRight size={20}/>
+              </p>
+            )}
+          </div>
+
         </div>
       </div>
     </React.Fragment>

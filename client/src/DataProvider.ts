@@ -15,6 +15,7 @@ export interface CategoryListProps {
 
 export interface UserDetailsProps {
     name: string;
+    _id: string;
 }
 
 
