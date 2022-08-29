@@ -116,4 +116,11 @@ export const singlePostDetails = async(slug:any) =>{
 
 }
 
+export const getMorePostBySameUser = async(slug:any) =>{
+
+  const res = await axios.get(API_URL+"/more-posts-by-user/"+slug,);
+  return res;
+
+}
+
 
