@@ -81,10 +81,8 @@ export const uploadImage = async (props: UploadImageProps) => {
 export interface PostCreateProps {
   title: string;
   des: string;
-  slug: string;
   image: any;
   categoryBy: string;
-  postedBy: string;
 }
 
 export const createPost = async (props: PostCreateProps) => {
