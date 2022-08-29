@@ -39,12 +39,12 @@ const PostCard = ({ post }: IPropsPostCard) => {
           <span className="lineforteammembers"></span>
 
           <div className="date-categroy">
-            <p style={{color:"#cd5c5c",fontSize:"17px",}}>
+            <p style={{color:"blueviolet",fontSize:"17px",}}>
               {moment(post.date).format("MMM Do YY")}
 
             
             </p>
-            <p style={{color:"#cd5c5c",fontSize:"17px",}}>{post.categoryBy.categoryName}</p>
+            <p style={{color:"blueviolet",fontSize:"17px",}}>{post.categoryBy.categoryName}</p>
           </div>
           <div className="show-read-more-button">
             {show && (

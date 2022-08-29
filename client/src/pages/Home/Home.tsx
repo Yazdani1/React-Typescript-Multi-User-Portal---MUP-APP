@@ -15,9 +15,11 @@ const Home = () => {
           </div>
 
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-            <CardLayout title="Category">
-              <CategorySection />
-            </CardLayout>
+            <div>
+              <CardLayout title="Category">
+                <CategorySection />
+              </CardLayout>
+            </div>
           </div>
         </div>
       </div>

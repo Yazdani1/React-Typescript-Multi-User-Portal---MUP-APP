@@ -11,7 +11,7 @@ const CategorySection = () => {
 
  
   return (
-    <div >
+    <div>
       {categorylist &&
         categorylist.map((item:any, index:any) => (
           <CategoryList category={item} key={index} linkid={true} />
