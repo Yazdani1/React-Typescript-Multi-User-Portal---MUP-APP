@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
 import "./App.css";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
@@ -48,6 +49,13 @@ const App = () => {
             />
           </Routes>
         </BrowserRouter>
+        <ScrollToTop
+          smooth
+          color="white"
+          height="20"
+          width="20"
+          style={{ borderRadius: "90px", backgroundColor: "red" }}
+        />
       </UserProvider>
     </CategoryProvider>
   );
