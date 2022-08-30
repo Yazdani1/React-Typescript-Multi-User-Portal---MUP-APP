@@ -39,6 +39,7 @@ const PostSection = () => {
   return (
     <React.Fragment>
       {loading ? (
+        //to show skelton 
         <div className="row">
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">

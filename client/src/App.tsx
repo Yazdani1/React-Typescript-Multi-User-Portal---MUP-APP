@@ -11,6 +11,7 @@ import SecureLayout from "./SecureLayout";
 import { UserProvider } from "./UserContext";
 import { CategoryProvider } from "./CategoryContext";
 import DetailsPage from "./pages/DetailsPost/DetailsPage";
+import PostsByCategory from "./pages/PostsByCategory/PostsByCategory";
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<Home />} />
             <Route path="/details-post/:slug" element={<DetailsPage />} />
+            <Route path="/category/:slug" element={<PostsByCategory />} />
+
 
             <Route
               path="/dashboard"

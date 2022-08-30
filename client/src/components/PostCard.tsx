@@ -33,12 +33,8 @@ const PostCard = ({ post }: IPropsPostCard) => {
             <div className="user-profile-pic">
               <h6>{post.postedBy.name}</h6>
             </div>
-
             <h6>{post.title}</h6>
-
-            <div></div>
           </div>
-          {/* <span className="lineforteammembers"></span> */}
           <div className="date-categroy">
             <h6 style={{ color: "blueviolet", fontSize: "17px" }}>
               {moment(post.date).format("MMM Do YY")}.
