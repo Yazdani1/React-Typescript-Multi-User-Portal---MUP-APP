@@ -44,10 +44,14 @@ export const getCategoryList = async () => {
   return res;
 };
 
+// to delete cate
+
 export const deleteCategory = async (id: number) => {
   const res = await axios.delete(API_URL + "/delete-category/" + id,headerConfig());
   return res;
 };
+
+// to get posts by  category
 
 export const getPostsByCategory = async(slug:any)=>{
 
@@ -55,6 +59,9 @@ export const getPostsByCategory = async(slug:any)=>{
   return res;
 
 }
+
+
+// to get category details
 
 export const getCategoryDetails = async(slug:any)=>{
   const res = await axios.get(API_URL+"/category-details/"+slug);
@@ -85,21 +92,30 @@ export interface PostCreateProps {
   categoryBy: string;
 }
 
+
+// to create posts
+
 export const createPost = async (props: PostCreateProps) => {
   const res = await axios.post(API_URL + "/create-post", { ...props }, headerConfig());
   return res;
 };
+
+// to get all the posts
 
 export const getAllPosts = async () => {
   const res = await axios.get(API_URL + "/get-all-posts",);
   return res;
 };
 
+// to get loged in user posts
+
 export const getLogedInUserPosts = async () => {
   const res = await axios.get(API_URL + "/logedin-user-posts", headerConfig());
   return res;
 };
 
+
+// to delete posts
 
 export const deletePosts = async(id:number)=>{
 
@@ -108,6 +124,7 @@ export const deletePosts = async(id:number)=>{
 
 }
 
+// to get single post details
 
 export const singlePostDetails = async(slug:any) =>{
 
@@ -116,9 +133,22 @@ export const singlePostDetails = async(slug:any) =>{
 
 }
 
+
+// to get more posts by the same user..
+
 export const getMorePostBySameUser = async(slug:any) =>{
 
   const res = await axios.get(API_URL+"/more-posts-by-user/"+slug,);
+  return res;
+
+}
+
+// to get related posts by the same category
+
+
+export const getRelatedPostsByCategory = async(slug:any)=>{
+
+  const res = await axios.get(API_URL+"/related-posts/"+slug);
   return res;
 
 }

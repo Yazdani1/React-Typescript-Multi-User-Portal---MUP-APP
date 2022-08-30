@@ -160,7 +160,7 @@ const CreatePost = () => {
                 <div className="contact-form">
                   <label className="form-lebel">Description:</label>
                   <textarea
-                    maxLength={500}
+                    maxLength={3500}
                     className="form-control"
                     rows={4}
                     value={des}

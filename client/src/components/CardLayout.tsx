@@ -10,6 +10,7 @@ interface IPropsCardLayout {
   backgroun_color?: string,
   closeButton?: () => void;
   closeButtonText?: string;
+  postCount?: number;
 }
 const CardLayout = ({
   children,
@@ -18,11 +19,12 @@ const CardLayout = ({
   buttonColor,
   closeButton,
   closeButtonText,
-  backgroun_color
+  backgroun_color,
+  postCount
 }: IPropsCardLayout) => {
   return (
     <div className="card-layout-design" style={{ height: cardHeight,backgroundColor:backgroun_color }}>
-      <h5>{title}</h5>
+      <h5>{title} {postCount}</h5>
       {children}
      
         {closeButton && (

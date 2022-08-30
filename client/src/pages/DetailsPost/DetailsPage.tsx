@@ -11,8 +11,12 @@ import PageLayout from "../PageLayout/PageLayout";
 import DetailsPost from "./DetailsPost";
 import RelatedPosts from "./RelatedPosts";
 import MorePostsBySameUser from "./MorePostsBySameUser";
-import PostCard from "../../components/PostCard";
-import { singlePostDetails, getMorePostBySameUser } from "../../API";
+import CardLayout from "../../components/CardLayout";
+import {
+  singlePostDetails,
+  getMorePostBySameUser,
+  getRelatedPostsByCategory,
+} from "../../API";
 import { PostListProps } from "../../DataProvider";
 
 const DetailsPage = () => {
@@ -21,6 +25,7 @@ const DetailsPage = () => {
   const [detailsSinglePost, setDetailsSinglePost] = useState<PostListProps>();
   const [morePostsbyUser, setMorePostsbyUser] = useState([]);
   const [error, setError] = useState(false);
+  const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
 
   // to load single post
   const loadSinglePosts = async () => {
@@ -43,9 +48,24 @@ const DetailsPage = () => {
     }
   };
 
+  // to load realated posts by the same category
+
+  const loadRelatedPosts = async () => {
+    try {
+      const res = await getRelatedPostsByCategory(slug);
+
+      if (res) {
+        setRelatedPosts(res.data);
+      }
+    } catch (error: any) {
+      setError(error.response && error.response.data.error);
+    }
+  };
+
   useEffect(() => {
     loadSinglePosts();
     loadMorePostsbyUser();
+    loadRelatedPosts();
   }, [morePostsbyUser]);
 
   const showError = () => (
@@ -64,11 +84,21 @@ const DetailsPage = () => {
           <div className="col-xl-7 col-lg-7 col-md-6 col-sm-12">
             {showError()}
             <DetailsPost post={detailsSinglePost} />
-            <MorePostsBySameUser postlist={morePostsbyUser} postedByname={detailsSinglePost?.postedBy?.name}/>
+            <MorePostsBySameUser
+              postlist={morePostsbyUser}
+              postedByname={detailsSinglePost?.postedBy?.name}
+            />
           </div>
 
           <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
-            <RelatedPosts />
+            <CardLayout title="Related Posts:" postCount={relatedPosts?.length}>
+
+            </CardLayout>
+
+            {relatedPosts &&
+              relatedPosts.map((item: any, index: any) => (
+                <RelatedPosts post={item} key={index} />
+              ))}
           </div>
         </div>
       </div>

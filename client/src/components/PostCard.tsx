@@ -30,6 +30,7 @@ const PostCard = ({ post }: IPropsPostCard) => {
         <div className="card team-members-item">
           <img src={post.image} />
           <div className="team-info">
+            
             <div className="user-profile-pic">
               <h6>{post.postedBy.name}</h6>
             </div>

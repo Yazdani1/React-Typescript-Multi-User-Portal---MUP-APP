@@ -1,0 +1,26 @@
+
+.postedby-profile-details{
+    display: flex;
+}
+
+.postedby-profile-details p{
+    margin-top: 25px;
+    padding-left: 20px;
+}
+
+
+.postedby-user-image{
+    height: 60px;
+    width: 60px;
+    background-color: orangered;
+    border-radius: 90px;
+    margin-top: 20px;
+
+}
+
+.postedby-user-image h6{
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    font-weight: bold;
+}

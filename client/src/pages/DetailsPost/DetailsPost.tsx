@@ -2,6 +2,7 @@ import React from "react";
 import CardLayout from "../../components/CardLayout";
 import { PostListProps } from "../../DataProvider";
 import moment from "moment";
+import "./DetailsPost.css";
 
 interface DetailsSinglePost {
   post: PostListProps | undefined;
@@ -17,11 +18,21 @@ const DetailsPost = ({ post }: DetailsSinglePost) => {
           height="350px"
           style={{ objectFit: "cover" }}
         />
-        <h1>{post?.title}</h1>
-        <p>{post?.des}</p>
-        <p>{post?.postedBy.name}</p>
+        <div className="postedby-profile-details">
+          <div className="postedby-user-image">
+          <h6>{post?.postedBy.name.substring(0, 2)}</h6>
+
+          </div>
+          <div>
+            <p>{post?.postedBy.name}</p>
+            <p style={{marginTop:"-15px"}}> {moment(post?.date).format("MMM Do YY")}.</p>
+          </div>
+        </div>
+
         <p>{post?.categoryBy.categoryName}</p>
-        <p> {moment(post?.date).format("MMM Do YY")}.</p>
+
+        <h6>{post?.title}</h6>
+        <p>{post?.des}</p>
       </div>
     </CardLayout>
   );

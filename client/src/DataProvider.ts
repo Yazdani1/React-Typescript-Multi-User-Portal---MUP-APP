@@ -2,35 +2,39 @@
 /*********     Category     *************/
 /****************************************/
 
-export interface CategoryListProps {
-  categoryName: string;
+
+export interface IBase{
   slug?: string;
   _id: number;
   date: string;
+}
+
+
+export interface CategoryListProps extends IBase {
+  categoryName: string;
+
 }
 
 /****************************************/
 /*********     Posts     *************/
 /****************************************/
 
-export interface UserDetailsProps {
+export interface UserDetailsProps extends IBase{
     name: string;
-    _id: string;
+  
 }
 
 
-export interface CategoryDetailsProps {
-    categoryName: string;
-    _id: string;
-    slug: string;
-}
+// export interface CategoryDetailsProps {
+//     categoryName: string;
+//     _id: string;
+//     slug: string;
+// }
 
-export interface PostListProps extends UserDetailsProps,CategoryDetailsProps{
+export interface PostListProps extends IBase{
   title: string;
   des: string;
   image: any;
-  categoryBy: CategoryDetailsProps;
-  slug: string;
+  categoryBy: CategoryListProps;
   postedBy: UserDetailsProps;
-  date: string;
 }
