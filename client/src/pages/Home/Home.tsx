@@ -5,6 +5,7 @@ import CardLayout from "../../components/CardLayout";
 import CategorySection from "./CategorySection";
 import PostSection from "./PostSection";
 import Skelton from "../../components/Skelton";
+import UserLists from "./UserLists";
 
 const Home = () => {
   return (
@@ -14,7 +15,6 @@ const Home = () => {
           <div className="col-xl-9 col-lg-9 col-md-6 col-sm-12">
             <PostSection />
 
-           
           </div>
 
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
@@ -25,6 +25,8 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <UserLists />
+
       </div>
     </PageLayout>
   );
