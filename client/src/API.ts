@@ -35,11 +35,7 @@ export interface CreateCategoryProps {
 }
 
 export const createCategory = async (props: CreateCategoryProps) => {
-  const res = await axios.post(
-    API_URL + "/create-category",
-    { ...props },
-    headerConfig()
-  );
+  const res = await axios.post(API_URL + "/create-category",{ ...props },headerConfig());
   return res;
 };
 
@@ -49,12 +45,21 @@ export const getCategoryList = async () => {
 };
 
 export const deleteCategory = async (id: number) => {
-  const res = await axios.delete(
-    API_URL + "/delete-category/" + id,
-    headerConfig()
-  );
+  const res = await axios.delete(API_URL + "/delete-category/" + id,headerConfig());
   return res;
 };
+
+export const getPostsByCategory = async(slug:any)=>{
+
+  const res = await axios.get(API_URL+"/posts-by-category/"+slug);
+  return res;
+
+}
+
+export const getCategoryDetails = async(slug:any)=>{
+  const res = await axios.get(API_URL+"/category-details/"+slug);
+  return res;
+}
 
 /****************************************/
 /********* Upload Image to AWS S3  ******/
@@ -65,17 +70,12 @@ export interface UploadImageProps {
 }
 
 export const uploadImage = async (props: UploadImageProps) => {
-  const res = await axios.post(
-    API_URL + "/upload-image",
-    { ...props },
-    headerConfig()
-  );
-
+  const res = await axios.post(API_URL + "/upload-image",{ ...props },headerConfig());
   return res;
 };
 
 /****************************************/
-/*********  Post Dashboard Side *********/
+/*********  Post *********/
 /****************************************/
 
 export interface PostCreateProps {

@@ -39,9 +39,13 @@ const PostCard = ({ post }: IPropsPostCard) => {
             <h6 style={{ color: "blueviolet", fontSize: "17px" }}>
               {moment(post.date).format("MMM Do YY")}.
             </h6>
+            <Link  to={"/category/" + post.categoryBy.slug}
+          style={{ textDecoration: "none", color: "black" }}>
             <h6 style={{ color: "red", fontSize: "17px" }}>
               {post.categoryBy.categoryName}
             </h6>
+            </Link>
+
           </div>
 
           <Link
