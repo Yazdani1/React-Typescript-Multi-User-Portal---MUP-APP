@@ -1,7 +1,7 @@
 
 
 export interface IBase{
-  slug?: string;
+  slug: string;
   _id: number;
   date: string;
 }

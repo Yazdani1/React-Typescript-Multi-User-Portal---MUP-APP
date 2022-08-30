@@ -12,6 +12,7 @@ import { UserProvider } from "./UserContext";
 import { CategoryProvider } from "./CategoryContext";
 import DetailsPage from "./pages/DetailsPost/DetailsPage";
 import PostsByCategory from "./pages/PostsByCategory/PostsByCategory";
+import UserPublicProfile from "./pages/UserPublicProfile/UserPublicProfile";
 
 const App = () => {
   return (
@@ -24,6 +25,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/details-post/:slug" element={<DetailsPage />} />
             <Route path="/category/:slug" element={<PostsByCategory />} />
+            <Route path="/profile/:slug" element={<UserPublicProfile />} />
+
 
 
             <Route
