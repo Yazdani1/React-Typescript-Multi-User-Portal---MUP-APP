@@ -1,6 +1,3 @@
-/****************************************/
-/*********     Category     *************/
-/****************************************/
 
 
 export interface IBase{
@@ -9,27 +6,34 @@ export interface IBase{
   date: string;
 }
 
+/****************************************/
+/*********     Category     *************/
+/****************************************/
+
 
 export interface CategoryListProps extends IBase {
   categoryName: string;
 
 }
 
+
+/****************************************/
+/*********     Users     *************/
+/****************************************/
+
+export interface UserDetailsProps extends IBase{
+  name: string;
+  profession: string;
+
+}
+
+
 /****************************************/
 /*********     Posts     *************/
 /****************************************/
 
-export interface UserDetailsProps extends IBase{
-    name: string;
-  
-}
 
 
-// export interface CategoryDetailsProps {
-//     categoryName: string;
-//     _id: string;
-//     slug: string;
-// }
 
 export interface PostListProps extends IBase{
   title: string;

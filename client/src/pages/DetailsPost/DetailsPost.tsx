@@ -29,7 +29,7 @@ const DetailsPost = ({ post }: DetailsSinglePost) => {
           </div>
         </div>
 
-        <p>{post?.categoryBy.categoryName}</p>
+        <p style={{color:"orangered",fontSize:"25px" }}>{post?.categoryBy.categoryName}</p>
 
         <h6>{post?.title}</h6>
         <p>{post?.des}</p>

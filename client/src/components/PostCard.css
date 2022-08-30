@@ -1,118 +1,135 @@
 .team-members {
-  
-  }
-  #dark .team-members {
-    color: white;
-  }
-  
-  #dark .team-members-item {
-    background-color: #38004c;
-    color: white;
-  }
-  
-  .team h5 {
-    text-align: center;
-  }
-  .team-info {
-    padding: 10px;
-  }
-  
-  .card {
-    border: none;
-  }
-  
+}
+#dark .team-members {
+  color: white;
+}
+
+#dark .team-members-item {
+  background-color: #38004c;
+  color: white;
+}
+
+.team h5 {
+  text-align: center;
+}
+
+.card {
+  border: none;
+}
+
+.team-members-item {
+  margin-top: 20px;
+  height: auto;
+  overflow: hidden;
+  height: 400px;
+
+  box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
+  -webkit-box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
+  -moz-box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
+}
+#dark .team-members-item {
+  box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+}
+
+.team-members-item:hover {
+  box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+
+  cursor: pointer;
+  transition-duration: 2s;
+}
+
+.team-members-item img {
+  height: 240px;
+  object-fit: cover;
+  cursor: pointer;
+
+  transition: transform 2s, filter 1.5s ease-in-out;
+  transform-origin: center center;
+  filter: brightness(100%);
+}
+
+.team-members-item:hover img {
+  filter: brightness(100%);
+  transform: scale(1.05);
+}
+
+.team-social-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.team-social-icon p {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(52, 51, 40);
+  color: white;
+  border-radius: 90px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.team-social-icon p:hover {
+  background-color: blueviolet;
+  cursor: pointer;
+}
+
+.lineforteammembers {
+  display: block;
+  width: 170px;
+  height: 1px;
+  margin: 2px auto;
+  background-color: rgb(16, 16, 15);
+}
+
+#dark .lineforteammembers {
+  display: block;
+  width: 170px;
+  height: 1px;
+  margin: 2px auto;
+  background-color: rgb(228, 228, 171);
+}
+
+.team-info {
+  padding: 10px;
+}
+
+.date-categroy {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-read-more-button p {
+  text-align: center;
+  color: blueviolet;
+}
+
+.user-profile {
+  display: flex;
+}
+
+.user-profile-picture {
+  height: 50px;
+  width: 50px;
+  background-color: orangered;
+  border-radius: 90px;
+}
+
+.user-profile-picture p {
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+}
+
+
+@media (max-width: 1000px) {
   .team-members-item {
-    margin-top: 20px;
     height: auto;
-    overflow: hidden;
-    height: 400px;
-  
-    box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
-    -webkit-box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
-    -moz-box-shadow: 15px 9px 9px -2px rgba(230, 224, 224, 0.86);
   }
-  #dark .team-members-item{
-    box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-    -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-    -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-  }
-  
-  .team-members-item:hover {
-    box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-    -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-    -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-  
-    cursor: pointer;
-    transition-duration: 2s;
-  }
-  
-  .team-members-item img {
-    height: 240px;
-    object-fit: cover;
-    cursor: pointer;
-  
-    transition: transform 2s, filter 1.5s ease-in-out;
-    transform-origin: center center;
-    filter: brightness(100%);
-  }
-  
-  .team-members-item:hover img {
-    filter: brightness(100%);
-    transform: scale(1.05);
-  }
-  
-  .team-social-icon {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .team-social-icon p {
-    height: 40px;
-    width: 40px;
-    background-color: rgb(52, 51, 40);
-    color: white;
-    border-radius: 90px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    margin: 10px;
-  }
-  .team-social-icon p:hover {
-    background-color: blueviolet;
-    cursor: pointer;
-  }
-  
-  .lineforteammembers {
-    display: block;
-    width: 170px;
-    height: 1px;
-    margin: 2px auto;
-    background-color: rgb(16, 16, 15);
-  }
-  
-  #dark .lineforteammembers {
-    display: block;
-    width: 170px;
-    height: 1px;
-    margin: 2px auto;
-    background-color: rgb(228, 228, 171);
-  }
-  
-
-  .date-categroy{
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .show-read-more-button p{
-    text-align: center;
-    color:blueviolet;
-  }
-
-
-  @media (max-width: 1000px) {
-    .team-members {
-      height: auto;
-    }
-  }
+}

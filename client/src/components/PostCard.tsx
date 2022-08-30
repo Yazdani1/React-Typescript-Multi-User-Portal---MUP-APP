@@ -29,24 +29,31 @@ const PostCard = ({ post }: IPropsPostCard) => {
       >
         <div className="card team-members-item">
           <img src={post.image} />
+
           <div className="team-info">
-            
-            <div className="user-profile-pic">
-              <h6>{post.postedBy.name}</h6>
+            <div className="user-profile">
+              <div className="user-profile-picture">
+                <p>{post.postedBy.name.substring(0, 2)}</p>
+              </div>
+              <h6 style={{ marginTop: "10px", paddingLeft: "10px" }}>
+                {post.postedBy.name}
+              </h6>
             </div>
-            <h6>{post.title}</h6>
+            <h6>{post.title.substring(0,50)}</h6>
           </div>
+
           <div className="date-categroy">
             <h6 style={{ color: "blueviolet", fontSize: "17px" }}>
               {moment(post.date).format("MMM Do YY")}.
             </h6>
-            <Link  to={"/category/" + post.categoryBy.slug}
-          style={{ textDecoration: "none", color: "black" }}>
-            <h6 style={{ color: "red", fontSize: "17px" }}>
-              {post.categoryBy.categoryName}
-            </h6>
+            <Link
+              to={"/category/" + post.categoryBy.slug}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <h6 style={{ color: "red", fontSize: "17px" }}>
+                {post.categoryBy.categoryName}
+              </h6>
             </Link>
-
           </div>
 
           <Link

@@ -13,6 +13,8 @@ const Home = () => {
         <div className="row">
           <div className="col-xl-9 col-lg-9 col-md-6 col-sm-12">
             <PostSection />
+
+           
           </div>
 
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
