@@ -5,7 +5,7 @@ import "./CardLayout.css";
 interface IPropsCardLayout {
   title?: string;
   cardHeight?: string;
-  children: ReactNode;
+  children?: ReactNode;
   buttonColor?: string;
   backgroun_color?: string,
   closeButton?: () => void;

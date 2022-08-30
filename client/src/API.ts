@@ -26,6 +26,17 @@ export const userLogin = async (props: UserLoginProps) => {
   return res;
 };
 
+
+// to get user lists
+
+export const getUserLists = async()=>{
+
+  const res = await axios.get(API_URL+"/all-user-lists");
+  return res;
+
+}
+
+
 /****************************************/
 /*********     Category     *************/
 /****************************************/

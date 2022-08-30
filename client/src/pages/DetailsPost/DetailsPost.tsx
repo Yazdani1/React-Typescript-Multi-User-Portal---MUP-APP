@@ -20,8 +20,7 @@ const DetailsPost = ({ post }: DetailsSinglePost) => {
         />
         <div className="postedby-profile-details">
           <div className="postedby-user-image">
-          <h6>{post?.postedBy.name.substring(0, 2)}</h6>
-
+             <h6>{post?.postedBy.name.substring(0, 2)}</h6>
           </div>
           <div>
             <p>{post?.postedBy.name}</p>

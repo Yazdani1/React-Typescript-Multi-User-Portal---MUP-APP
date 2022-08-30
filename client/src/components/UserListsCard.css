@@ -128,6 +128,26 @@
     color: green;
     font-size: 20px;
   }
+
+  .user-list-user-image {
+    height: 60px;
+    width: 60px;
+    background-color: blueviolet;
+    border-radius: 90px;
+    margin-top: 20px;
+    border: 3px solid #F1C40F;
+    margin-top: -30px;
+  }
+
+  .user-list-user-image h6{
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    font-weight: bold;
+  }
+
+
+
   @media (max-width: 1000px) {
     .testimonial-section {
       height: auto;
