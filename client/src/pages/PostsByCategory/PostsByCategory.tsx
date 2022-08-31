@@ -133,6 +133,7 @@ const PostsByCategory = () => {
                   ))} : Total Posts {postLists.length}
               </h6>
             </CardLayout>
+
             {loading ? (
               <div className="row">
                 {[1, 2, 3, 4, 5, 6].map((item, index) => (
@@ -151,6 +152,9 @@ const PostsByCategory = () => {
                   ))}
               </div>
             )}
+
+
+            
           </div>
         </div>
       </div>

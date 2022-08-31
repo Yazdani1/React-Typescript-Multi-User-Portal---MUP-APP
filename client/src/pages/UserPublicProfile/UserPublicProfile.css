@@ -1,0 +1,38 @@
+.main-container {
+  min-height: 70vh;
+}
+
+.profile-pic-header {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    margin: 25px;
+    font-weight: bold;
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+.user-profile-image-postion {
+  height: 100px;
+  width: 100px;
+  background-color: #FF1042;
+  border-radius: 90px;
+  color: white;
+
+}
+
+.user-profile-image-postion p{
+    text-align: center;
+    line-height: 120px;
+}
+
+.user-profile-details {
+  text-align: center;
+  padding-top: 15px;
+  padding: 20px;
+}
+
+
+
+ 

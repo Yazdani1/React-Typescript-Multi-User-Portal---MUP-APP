@@ -48,6 +48,15 @@ export const getSingleUserPosts = async(slug:any)=>{
 }
 
 
+// to get single user details
+
+export const getSingleUserDetails = async(slug:any)=>{
+
+  const res = await axios.get(API_URL+"/user-details/"+slug);
+  return res;
+
+}
+
 /****************************************/
 /*********     Category     *************/
 /****************************************/
