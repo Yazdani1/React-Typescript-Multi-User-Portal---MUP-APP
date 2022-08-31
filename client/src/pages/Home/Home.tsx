@@ -6,6 +6,7 @@ import CategorySection from "./CategorySection";
 import PostSection from "./PostSection";
 import Skelton from "../../components/Skelton";
 import UserLists from "./UserLists";
+import Subscription from "../Subscription/Subscription";
 
 const Home = () => {
   return (
@@ -14,7 +15,6 @@ const Home = () => {
         <div className="row">
           <div className="col-xl-9 col-lg-9 col-md-6 col-sm-12">
             <PostSection />
-
           </div>
 
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
@@ -26,8 +26,8 @@ const Home = () => {
           </div>
         </div>
         <UserLists />
-
       </div>
+      <Subscription />
     </PageLayout>
   );
 };

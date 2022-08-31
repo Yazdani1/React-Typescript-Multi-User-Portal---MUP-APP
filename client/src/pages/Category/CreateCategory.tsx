@@ -63,8 +63,6 @@ const CreateCategory = () => {
         toast.success("Category Deleted Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
-
-
         getAllCategory();
       }
     } catch (error: any) {
