@@ -15,6 +15,7 @@ import CategorySection from "../Home/CategorySection";
 import Skelton from "../../components/Skelton";
 import { CategoryListProps } from "../../DataProvider";
 import { CategoryContext } from "../../CategoryContext";
+import { PostListProps } from "../../DataProvider";
 import "./PostsByCategory.css";
 
 const PostsByCategory = () => {
@@ -98,6 +99,7 @@ const PostsByCategory = () => {
 
       <div className="container" style={{ minHeight: "90vh" }}>
         <div className="row">
+          {/* to show category */}
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
             <CardLayout title="Category">
               {category &&
@@ -121,7 +123,14 @@ const PostsByCategory = () => {
           <div className="col-xl-9 col-lg-9 col-md-6 col-sm-12">
             <CardLayout>
               <h6>
-                {categoryInfo?.categoryName} : Total {postLists?.length} posts
+                {postLists &&
+                  postLists.map((item, index) => (
+                    <>
+                   {index===0 &&  
+                      item.categoryBy.categoryName}
+                  
+                    </>
+                  ))} : Total Posts {postLists.length}
               </h6>
             </CardLayout>
             {loading ? (

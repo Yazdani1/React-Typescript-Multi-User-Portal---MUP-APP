@@ -24,3 +24,21 @@
     color: white;
     font-weight: bold;
 }
+
+
+/* load more button design to load more posts by the same user */
+.load-teach-stack-button{
+    background-color: orangered;
+    width: 50%;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }

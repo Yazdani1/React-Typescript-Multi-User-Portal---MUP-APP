@@ -27,6 +27,8 @@ const DetailsPage = () => {
   const [error, setError] = useState(false);
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
 
+
+
   // to load single post
   const loadSinglePosts = async () => {
     try {
@@ -84,17 +86,21 @@ const DetailsPage = () => {
           <div className="col-xl-7 col-lg-7 col-md-6 col-sm-12">
             {showError()}
             <DetailsPost post={detailsSinglePost} />
+
             <MorePostsBySameUser
               postlist={morePostsbyUser}
               postedByname={detailsSinglePost?.postedBy?.name}
               postedBySlug={detailsSinglePost?.postedBy.slug}
             />
+
+          
           </div>
 
           <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
-            <CardLayout title="Related Posts:" postCount={relatedPosts?.length}>
-
-            </CardLayout>
+            <CardLayout
+              title="Related Posts:"
+              postCount={relatedPosts?.length}
+            ></CardLayout>
 
             {relatedPosts &&
               relatedPosts.map((item: any, index: any) => (

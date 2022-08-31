@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navigate,
   useLocation,
@@ -21,6 +21,13 @@ const MorePostsBySameUser = ({
   postedByname,
   postedBySlug,
 }: MorePostsProps) => {
+  // to show load more pagination
+  const [visible, setVisible] = useState(2);
+
+  const loadMore = () => {
+    setVisible((prev) => prev + 2);
+  };
+
   return (
     <React.Fragment>
       <CardLayout>
@@ -37,11 +44,17 @@ const MorePostsBySameUser = ({
         </Link>
 
         <div className="row">
-          {postlist.map((item: any, index: any) => (
+          {postlist.slice(0, visible).map((item: any, index: any) => (
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
               <PostCard post={item} key={index} />
             </div>
           ))}
+
+          {visible >= postlist.length ? null : (
+            <span className="load-teach-stack-button" onClick={loadMore}>
+              Load More
+            </span>
+          )}
         </div>
       </CardLayout>
     </React.Fragment>
