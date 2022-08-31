@@ -36,6 +36,17 @@ export const getUserLists = async()=>{
 
 }
 
+// to get single user posts in public profile page
+
+
+
+export const getSingleUserPosts = async(slug:any)=>{
+
+  const res = await axios.get(API_URL+"/user-posts/"+slug);
+  return res;
+
+}
+
 
 /****************************************/
 /*********     Category     *************/

@@ -32,12 +32,22 @@ const RelatedPosts = ({ post }: RelatedPostsProps) => {
             <h6>{post.title.substring(0, 23)}</h6>
 
             <div className="post-user-info">
-              <div className="profile-pic-post-user">
-                <h6>{post.postedBy.name.substring(0, 2)}</h6>
-              </div>
-
+              <Link
+                to={"/profile/" + post.postedBy?.slug}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <div className="profile-pic-post-user">
+                  <h6>{post.postedBy.name.substring(0, 2)}</h6>
+                </div>
+              </Link>
               <div>
-                <p className="posted-by-username">{post.postedBy.name}</p>
+                <Link
+                  to={"/profile/" + post.postedBy?.slug}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <p className="posted-by-username">{post.postedBy.name}</p>
+                </Link>
+
                 <p className="posted-by-username">
                   {moment(post.date).format("MMM Do YY")}.
                 </p>

@@ -87,6 +87,7 @@ const DetailsPage = () => {
             <MorePostsBySameUser
               postlist={morePostsbyUser}
               postedByname={detailsSinglePost?.postedBy?.name}
+              postedBySlug={detailsSinglePost?.postedBy.slug}
             />
           </div>
 
