@@ -18,7 +18,7 @@ interface RelatedPostsProps {
 
 const RelatedPosts = ({ post }: RelatedPostsProps) => {
   return (
-    <CardLayout>
+    <div className="related-post-card">
       <Link
         to={"/details-post/" + post.slug}
         style={{ textDecoration: "none", color: "black" }}
@@ -77,7 +77,7 @@ const RelatedPosts = ({ post }: RelatedPostsProps) => {
           </div>
       
       </Link>
-    </CardLayout>
+    </div>
   );
 };
 

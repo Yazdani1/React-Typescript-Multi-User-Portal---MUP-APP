@@ -145,7 +145,10 @@ const UserPublicProfile = () => {
             )}
 
 
-            
+           {userPosts.length==0 &&  <CardLayout title="This user did not publish any posts yet!"/>}
+
+
+
           </div>
         </div>
       </div>

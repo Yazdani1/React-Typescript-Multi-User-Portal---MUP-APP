@@ -22,7 +22,7 @@ const MorePostsBySameUser = ({
   postedBySlug,
 }: MorePostsProps) => {
   // to show load more pagination
-  const [visible, setVisible] = useState(2);
+  const [visible, setVisible] = useState(4);
 
   const loadMore = () => {
     setVisible((prev) => prev + 2);

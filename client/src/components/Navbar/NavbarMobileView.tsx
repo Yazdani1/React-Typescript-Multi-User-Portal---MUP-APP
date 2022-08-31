@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./mavbarmobileview.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
@@ -9,8 +9,13 @@ import {
   NavLink,
 } from "react-router-dom";
 
+import { UserContext } from "../../UserContext";
 
 const NavbarMobileView = () => {
+  let navigate = useNavigate();
+
+  const [state, setState] = useContext(UserContext);
+
   const [open, setOpen] = useState(false);
 
   const handleNavbaropen = () => {
@@ -27,16 +32,61 @@ const NavbarMobileView = () => {
 
       {open ? (
         <div className="mobile-nav">
-          <ul>
-            <li className="nav-item">
-              <Link to={"/create-category"} style={{ textDecoration: "none" }}>
-                Home
-              </Link>
-            </li>
-           
-        
-
-          </ul>
+          {state && state.token && state.token ? (
+            <ul>
+              <li className="nav-item">
+                <Link
+                  to={"/"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  {state && state.user && state.user.name}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to={"/"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to={"/dashboard"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li className="nav-item">
+                <Link
+                  to={"/"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to={"/signup"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Sign Up
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to={"/signin"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Sign In
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       ) : null}
     </div>
