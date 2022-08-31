@@ -124,9 +124,9 @@ const SignIn = () => {
                   </button>
                 </div>
                 <div className="text-center form-bottom-title">
-                  <Link to={"/reset"} style={{ textDecoration: "none" }}>
+                  {/* <Link to={"/reset"} style={{ textDecoration: "none" }}>
                     <p>Forgot password?</p>
-                  </Link>
+                  </Link> */}
                   <Link to={"/signup"} style={{ textDecoration: "none" }}>
                     <p>Don't have an account? Create now</p>
                   </Link>

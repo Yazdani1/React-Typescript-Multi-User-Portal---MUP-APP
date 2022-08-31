@@ -77,6 +77,7 @@ const UserPublicProfile = () => {
         <div className="row">
           <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
             <CardLayout>
+
               <div className="profile-pic-header">
                 <div className="user-profile-image-postion">
                   <p>{userDetails?.name.substring(0, 2)}</p>
@@ -98,26 +99,26 @@ const UserPublicProfile = () => {
                 <h6 style={{ paddingTop: "10px" }}>
                   Published Posts: {userPosts.length}
                 </h6>
+
                 <h6>
                   Joined on: {moment(userDetails?.date).format("MMM Do YY")}.
                 </h6>
-              </div>
 
-              {/* <div className="user-profile-details">
+                <span
+                  style={{
+                    backgroundColor: "black",
+                    padding: "3px",
+                    color: "yellow",
+                    borderRadius: "10px",
+                  }}
+                >
 
-                <div className="user-profile-image-postion">
-                  <h6>{userDetails?.name.substring(0, 2)}</h6>
-                </div>
-
-                <h6>{userDetails?.name}</h6>
-                <span style={{ backgroundColor: "black", padding: "3px",color:"yellow",borderRadius:"10px" }}>
-                  {userDetails?.profession}
+                  {userPosts.length>=4 ? "Golden Member" :"Silver Member"}
+                  
                 </span>
-                <h6>Published Posts: {userPosts.length}</h6>
-                <h6>
-                  Member since: {moment(userDetails?.date).format("MMM Do YY")}.
-                </h6>
-              </div> */}
+
+
+              </div>            
             </CardLayout>
           </div>
 
@@ -142,6 +143,9 @@ const UserPublicProfile = () => {
                   ))}
               </div>
             )}
+
+
+            
           </div>
         </div>
       </div>

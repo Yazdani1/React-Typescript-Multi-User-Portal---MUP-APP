@@ -17,6 +17,8 @@ const SignUp = () => {
   const [userName, setUserName] = useState<string>("");
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  const [userProfession, setUserProfession] = useState<string>("");
+
 
   //to show loading state
 
@@ -28,11 +30,11 @@ const SignUp = () => {
     setLoading(true);
 
     try {
-      
       const payload: UserRegistrationProps = {
         name: userName,
         email: userEmail,
         password: userPassword,
+        profession: userProfession
       };
 
       const res = await userRegistration(payload);
@@ -88,6 +90,22 @@ const SignUp = () => {
                     value={userEmail}
                     onChange={(e) => setUserEmail(e.target.value)}
                   />
+                </div>
+                <div className="contact-form">
+                  <label className="form-lebel">Select Profession:</label>
+                  <select
+                    className="custom-select"
+                    value={userProfession}
+                    onChange={(e) => setUserProfession(e.target.value)}
+                  >
+                    <option value="Software Developer">
+                      Software Developer
+                    </option>
+                    <option value="Student">Student</option>
+                    <option value="Instructor">Instructor</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+
+                  </select>
                 </div>
                 <div className="form-group">
                   <input

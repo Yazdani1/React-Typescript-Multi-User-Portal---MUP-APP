@@ -12,6 +12,8 @@ import DetailsPost from "./DetailsPost";
 import RelatedPosts from "./RelatedPosts";
 import MorePostsBySameUser from "./MorePostsBySameUser";
 import CardLayout from "../../components/CardLayout";
+import Skelton from "../../components/Skelton";
+
 import {
   singlePostDetails,
   getMorePostBySameUser,
@@ -27,13 +29,14 @@ const DetailsPage = () => {
   const [error, setError] = useState(false);
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
 
-
-
   // to load single post
   const loadSinglePosts = async () => {
+
     try {
       const res = await singlePostDetails(slug);
-      setDetailsSinglePost(res.data);
+      if (res) {
+        setDetailsSinglePost(res.data);
+      }
     } catch (error: any) {
       setError(error.response && error.response.data.error);
     }
@@ -42,9 +45,12 @@ const DetailsPage = () => {
   // to load more posts by the same user
 
   const loadMorePostsbyUser = async () => {
+
     try {
       const res = await getMorePostBySameUser(slug);
-      setMorePostsbyUser(res.data);
+      if (res) {
+        setMorePostsbyUser(res.data);
+      }
     } catch (error: any) {
       setError(error.response && error.response.data.error);
     }
@@ -53,6 +59,7 @@ const DetailsPage = () => {
   // to load realated posts by the same category
 
   const loadRelatedPosts = async () => {
+
     try {
       const res = await getRelatedPostsByCategory(slug);
 
@@ -68,7 +75,7 @@ const DetailsPage = () => {
     loadSinglePosts();
     loadMorePostsbyUser();
     loadRelatedPosts();
-  }, [morePostsbyUser]);
+  }, [detailsSinglePost]);
 
   const showError = () => (
     <div
@@ -82,32 +89,32 @@ const DetailsPage = () => {
   return (
     <PageLayout>
       <div className="container">
-        <div className="row">
-          <div className="col-xl-7 col-lg-7 col-md-6 col-sm-12">
-            {showError()}
-            <DetailsPost post={detailsSinglePost} />
+      
+          <div className="row">
+            <div className="col-xl-7 col-lg-7 col-md-6 col-sm-12">
+              {showError()}
+              <DetailsPost post={detailsSinglePost} />
 
-            <MorePostsBySameUser
-              postlist={morePostsbyUser}
-              postedByname={detailsSinglePost?.postedBy?.name}
-              postedBySlug={detailsSinglePost?.postedBy.slug}
-            />
+              <MorePostsBySameUser
+                postlist={morePostsbyUser}
+                postedByname={detailsSinglePost?.postedBy?.name}
+                postedBySlug={detailsSinglePost?.postedBy.slug}
+              />
+            </div>
 
-          
+            <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+              <CardLayout
+                title="Related Posts:"
+                postCount={relatedPosts?.length}
+              ></CardLayout>
+
+              {relatedPosts &&
+                relatedPosts.map((item: any, index: any) => (
+                  <RelatedPosts post={item} key={index} />
+                ))}
+            </div>
           </div>
-
-          <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
-            <CardLayout
-              title="Related Posts:"
-              postCount={relatedPosts?.length}
-            ></CardLayout>
-
-            {relatedPosts &&
-              relatedPosts.map((item: any, index: any) => (
-                <RelatedPosts post={item} key={index} />
-              ))}
-          </div>
-        </div>
+   
       </div>
     </PageLayout>
   );

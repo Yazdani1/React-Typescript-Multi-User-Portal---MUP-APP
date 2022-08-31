@@ -38,10 +38,10 @@ const UserListsCard = ({ user }: UserListsCardProps) => {
           </div>
 
           <p style={{ marginTop: "10px" }}>{user.name}</p>
-          <p>
-            <span className="name" style={{ color: "orange" }}>
+          <p style={{fontWeight:"bold"}}>
+           
               {user.profession}
-            </span>
+         
           </p>
           <div style={{ display: "flex" }}>
             <p> {moment(user.date).format("MMM Do YY")}</p>

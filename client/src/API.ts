@@ -9,6 +9,7 @@ export interface UserRegistrationProps {
   name: string;
   email: string;
   password: string;
+  profession: string;
 }
 
 export const userRegistration = async (props: UserRegistrationProps) => {
@@ -113,7 +114,7 @@ export const uploadImage = async (props: UploadImageProps) => {
 };
 
 /****************************************/
-/*********  Post *********/
+/*********  Post                *********/
 /****************************************/
 
 export interface PostCreateProps {

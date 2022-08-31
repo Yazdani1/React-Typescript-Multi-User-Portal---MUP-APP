@@ -8,6 +8,9 @@ const UserLists = () => {
   const [userLists, setUserLists] = useState<any[]>([]);
   const [error, setError] = useState(false);
 
+  // to show load more pagination
+  const [visible, setVisible] = useState(3);
+
   const loadAllUserLists = async () => {
     try {
       const res = await getUserLists();
@@ -18,6 +21,10 @@ const UserLists = () => {
     } catch (error: any) {
       setError(error.response && error.response.data.error);
     }
+  };
+
+  const loadMore = () => {
+    setVisible((prev) => prev + 3);
   };
 
   useEffect(() => {
@@ -39,11 +46,17 @@ const UserLists = () => {
       <CardLayout title="Visit User Profile"></CardLayout>
       <div className="row">
         {userLists &&
-          userLists.map((useritem: any, index: any) => (
+          userLists.slice(0,visible).map((useritem: any, index: any) => (
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <UserListsCard user={useritem} />
             </div>
           ))}
+
+        {visible >= userLists.length ? null : (
+          <span className="load-teach-stack-button" onClick={loadMore}>
+            Load More
+          </span>
+        )}
       </div>
     </div>
   );
