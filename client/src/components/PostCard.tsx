@@ -14,7 +14,10 @@ const PostCard = ({ post }: IPropsPostCard) => {
   const [show, setShow] = useState(false);
 
   return (
-    <React.Fragment>
+    <Link
+      to={"/details-post/" + post.slug}
+      style={{ textDecoration: "none", color: "black" }}
+    >
       <div
         className="container team-members"
         id="teammemebrs"
@@ -45,6 +48,7 @@ const PostCard = ({ post }: IPropsPostCard) => {
             <h6 style={{ color: "blueviolet", fontSize: "17px" }}>
               {moment(post.date).format("MMM Do YY")}.
             </h6>
+
             <Link
               to={"/category/" + post.categoryBy.slug}
               style={{ textDecoration: "none", color: "black" }}
@@ -54,7 +58,6 @@ const PostCard = ({ post }: IPropsPostCard) => {
               </h6>
             </Link>
           </div>
-
           <Link
             to={"/details-post/" + post.slug}
             style={{ textDecoration: "none", color: "black" }}
@@ -62,15 +65,14 @@ const PostCard = ({ post }: IPropsPostCard) => {
             <div className="show-read-more-button">
               {show && (
                 <p>
-                  Read More
-                  <FiArrowRight size={20} />
+                  Read More <FiArrowRight size={20} />
                 </p>
               )}
             </div>
           </Link>
         </div>
       </div>
-    </React.Fragment>
+    </Link>
   );
 };
 
