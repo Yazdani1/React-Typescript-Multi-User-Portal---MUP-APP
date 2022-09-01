@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { FiArrowRight } from "react-icons/fi";
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  Link,
-  NavLink,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PostListProps } from "../DataProvider";
 
 import "./PostCard.css";
@@ -31,7 +25,6 @@ const PostCard = ({ post }: IPropsPostCard) => {
           <img src={post.image} />
 
           <div className="team-info">
-            
             <Link
               to={"/profile/" + post.postedBy.slug}
               style={{ textDecoration: "none", color: "black" }}

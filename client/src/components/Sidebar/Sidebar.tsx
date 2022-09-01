@@ -32,9 +32,6 @@ const Sidebar = () => {
 
       </div>
 
-      {/* // <div className="container">
-      //   <Home changeTheme={changeTheme} theme={theme}/>
-      // </div> */}
     </div>
   );
 };

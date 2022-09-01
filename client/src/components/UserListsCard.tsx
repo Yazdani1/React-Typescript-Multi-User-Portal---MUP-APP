@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  Link,
-  NavLink,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { UserDetailsProps } from "../DataProvider";
 import "./UserListsCard.css";
@@ -31,18 +25,13 @@ const UserListsCard = ({ user }: UserListsCardProps) => {
       >
         <div
           className="content"
-          // style={{ backgroundColor: "brown", color: "white" }}
         >
           <div className="user-list-user-image">
             <h6>{user.name.substring(0, 2)}</h6>
           </div>
 
           <p style={{ marginTop: "10px" }}>{user.name}</p>
-          <p style={{fontWeight:"bold"}}>
-           
-              {user.profession}
-         
-          </p>
+          <p style={{ fontWeight: "bold" }}>{user.profession}</p>
           <div style={{ display: "flex" }}>
             <p> {moment(user.date).format("MMM Do YY")}</p>
 

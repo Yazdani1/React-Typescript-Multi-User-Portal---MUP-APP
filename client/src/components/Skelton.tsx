@@ -1,4 +1,3 @@
-import React from "react";
 import "./Skelton.css";
 
 const Skelton = () => {
