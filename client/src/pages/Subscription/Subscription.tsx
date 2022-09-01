@@ -30,12 +30,7 @@ const Subscription = () => {
 
             <div
               className="subscribe-button"
-              // onClick={() => {
-              //   if (!state?.user) {
-              //       navigate("/signin");
-
-              //   }
-              // }}
+           
             >
               <p>
                 Subscribe <RiSendPlaneFill size={20} />
