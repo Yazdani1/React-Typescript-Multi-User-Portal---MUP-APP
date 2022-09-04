@@ -37,6 +37,7 @@ const DetailsPage = () => {
       if (res) {
         setDetailsSinglePost(res.data);
       }
+      console.log(res.data);
     } catch (error: any) {
       setError(error.response && error.response.data.error);
     }
@@ -75,7 +76,7 @@ const DetailsPage = () => {
     loadSinglePosts();
     loadMorePostsbyUser();
     loadRelatedPosts();
-  }, [detailsSinglePost]);
+  }, [slug]);
 
   const showError = () => (
     <div
