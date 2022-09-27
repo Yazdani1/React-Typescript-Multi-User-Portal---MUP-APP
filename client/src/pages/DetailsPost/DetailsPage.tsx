@@ -29,28 +29,34 @@ const DetailsPage = () => {
   const [error, setError] = useState(false);
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
 
+  const [loading, setLoading] = useState(true);
+
   // to load single post
   const loadSinglePosts = async () => {
-
+    setLoading(true);
     try {
       const res = await singlePostDetails(slug);
       if (res) {
         setDetailsSinglePost(res.data);
+        setLoading(false);
+
       }
       console.log(res.data);
     } catch (error: any) {
       setError(error.response && error.response.data.error);
+      setLoading(false);
+
     }
   };
 
   // to load more posts by the same user
 
   const loadMorePostsbyUser = async () => {
-
     try {
       const res = await getMorePostBySameUser(slug);
       if (res) {
         setMorePostsbyUser(res.data);
+
       }
     } catch (error: any) {
       setError(error.response && error.response.data.error);
@@ -60,7 +66,6 @@ const DetailsPage = () => {
   // to load realated posts by the same category
 
   const loadRelatedPosts = async () => {
-
     try {
       const res = await getRelatedPostsByCategory(slug);
 
@@ -90,7 +95,15 @@ const DetailsPage = () => {
   return (
     <PageLayout>
       <div className="container">
-      
+        {loading ? (
+          <div className="row">
+            {[1, 2, 3, 4, 5, 6].map((item, index) => (
+              <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <Skelton />
+              </div>
+            ))}
+          </div>
+        ) : (
           <div className="row">
             <div className="col-xl-7 col-lg-7 col-md-6 col-sm-12">
               {showError()}
@@ -115,7 +128,7 @@ const DetailsPage = () => {
                 ))}
             </div>
           </div>
-   
+        )}
       </div>
     </PageLayout>
   );

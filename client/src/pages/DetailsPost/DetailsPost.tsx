@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import {
   useParams,
   useLocation,
@@ -10,12 +10,20 @@ import CardLayout from "../../components/CardLayout";
 import { PostListProps } from "../../DataProvider";
 import moment from "moment";
 import "./DetailsPost.css";
+import Skelton from "../../components/Skelton";
+
 
 interface DetailsSinglePost {
   post: PostListProps | undefined;
 }
 
 const DetailsPost = ({ post }: DetailsSinglePost) => {
+
+
+  const [loading, setLoading] = useState(true);
+
+
+
   return (
     <CardLayout>
       <div style={{ margin: "20px" }}>
