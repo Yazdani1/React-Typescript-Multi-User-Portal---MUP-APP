@@ -9,7 +9,7 @@
 
 .related-post-image img {
   height: 150px;
-  width: 210px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -25,6 +25,7 @@
 .post-info {
   margin-left: 10px;
   padding-top: 10px;
+  line-height: 8px;
 }
 
 .post-user-info {
