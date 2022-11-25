@@ -5,10 +5,27 @@
 .category-list{
     margin: 10px;
     border: 1px solid black;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
+
+.category-item-design{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.length-item{
+    background-color: orangered;
+    color: white;
+    border-radius: 90px;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    text-align: center;
+}

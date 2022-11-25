@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { UserDetailsProps } from "../DataProvider";
+import {getSingleUserPosts} from "../API";
 import "./UserListsCard.css";
 
 interface UserListsCardProps {
@@ -11,6 +12,28 @@ interface UserListsCardProps {
 
 const UserListsCard = ({ user }: UserListsCardProps) => {
   const [show, setShow] = useState(false);
+
+   // to load user published posts
+   const [userAllPosts, setUserAllPosts] = useState<any[]>([]);
+
+   const loadUserPosts = async () => {
+    try {
+      const res = await getSingleUserPosts(user.slug);
+
+      if (res) {
+        setUserAllPosts(res.data);
+     
+      }
+    } catch (error: any) {
+    
+    }
+  };
+
+
+  useEffect(() => {
+    loadUserPosts();
+  }, []);
+
 
   return (
     <div
@@ -32,6 +55,7 @@ const UserListsCard = ({ user }: UserListsCardProps) => {
 
           <p style={{ marginTop: "10px" }}>{user.name}</p>
           <p style={{ fontWeight: "bold" }}>{user.profession}</p>
+          <h6>Published posts: {userAllPosts.length}</h6>
           <div style={{ display: "flex" }}>
             <p> {moment(user.date).format("MMM Do YY")}</p>
 

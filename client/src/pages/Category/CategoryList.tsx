@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { CategoryListProps } from "../../DataProvider";
+import { getPostsByCategory } from "../../API";
+import "./CreateCategory.css";
+
 import {
   Navigate,
   useLocation,
@@ -48,6 +51,23 @@ const CategoryList = ({
 }: CategoryRowProps) => {
   const [show, setShow] = useState(false);
 
+  // to load posts by category
+
+  const [postsByCategory, setPostsByCategory] = useState([]);
+
+  const loadPostsByCategory = async () => {
+    try {
+      const res = await getPostsByCategory(category.slug);
+      if (res) {
+        setPostsByCategory(res.data);
+      }
+    } catch (error: any) {}
+  };
+
+  useEffect(() => {
+    loadPostsByCategory();
+  }, []);
+
   return (
     <>
       {linkid ? (
@@ -60,8 +80,9 @@ const CategoryList = ({
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
           >
-            <div>
+            <div className="category-item-design">
               <h6>{category.categoryName}</h6>
+              <h6 className="length-item">{postsByCategory.length}</h6>
             </div>
 
             {visibleButton && show && (
